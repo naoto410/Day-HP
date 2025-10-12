@@ -59,16 +59,10 @@
   }
 
   .mainVisual {
-    height: calc(100vh - 9rem);
     aspect-ratio: 1 / 1.7;
-    width: min(90%, calc(var(--max-h) / 1.7));
-    max-width: calc(var(--max-h) / 1.7);
-    max-height: var(--max-h);
     position: relative;
     border-radius: 50% 50% 0 0 / 30% 30% 0 0 ;
     overflow: hidden;
-    /* width: 413px;
-    height: 700px; */
   }
 
   .mainImg {
@@ -83,10 +77,7 @@
 
   .labels {
     position: absolute;
-    bottom: 0;
-    right: -2rem;
     display: flex;
-    flex-direction: column;
     gap: 1rem;
   }
 
@@ -122,5 +113,39 @@
 
   .fade-leave-to {
     transform: translateX(-100%);
+  }
+
+  @media screen and (max-width: 964px) {
+    .main {
+      max-width: calc(100vh - 6rem);
+      width: 100%;
+    }
+
+    .mainVisual {
+      width: 100%;
+    }
+
+    .labels {
+      bottom: -2rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  @media screen and (min-width: 965px) {
+    .mainVisual {
+      height: calc(100vh - 9rem);
+      width: 413px;
+      height: 700px;
+      width: min(90%, calc(var(--max-h) / 1.7));
+      max-width: calc(var(--max-h) / 1.7);
+      max-height: var(--max-h);
+    }
+
+    .labels {
+      bottom: 0;
+      right: -2rem;
+      flex-direction: column;
+    }
   }
 </style>

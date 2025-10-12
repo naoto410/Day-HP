@@ -46,7 +46,6 @@
 
   .navigation {
     display: flex;
-    flex-direction: column;
     gap: 1rem;
   }
 
@@ -61,5 +60,27 @@
 
   .times, .days {
     font-size: 1.3rem;
+  }
+
+  @media screen and (max-width: 964px) {
+    .openingHours {
+      display: none;
+    }
+
+    .navigation {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      justify-content: space-between;
+      width: 100%;
+      background-color: #fff;
+      padding: 0.5rem 3rem;
+    }
+  }
+
+  @media screen and (min-width: 965px) {
+    .navigation {
+      flex-direction: column;
+    }
   }
 </style>

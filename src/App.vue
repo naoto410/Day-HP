@@ -24,10 +24,25 @@
 <style scoped>
   .layout {
     display: flex;
-    padding: 4.5rem;
   }
 
-  .layout > * {
-    flex: 1;
+  @media screen and (max-width: 964px) {
+    .layout {
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+      padding: 3rem;
+    }
   }
+
+  @media screen and (min-width: 965px) {
+    .layout {
+      padding: 4.5rem;
+    }
+
+    .layout > * {
+      flex: 1;
+    }
+  }
+
 </style>
