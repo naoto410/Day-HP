@@ -74,7 +74,7 @@
       justify-content: space-between;
       width: 100%;
       background-color: #fff;
-      padding: 1rem 3rem;
+      padding: 3rem;
     }
   }
 
