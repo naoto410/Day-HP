@@ -119,6 +119,7 @@
     .main {
       max-width: calc(100vh - 6rem);
       width: 100%;
+      margin-bottom: 4rem;
     }
 
     .mainVisual {
