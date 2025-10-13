@@ -2,7 +2,7 @@
   <main class="main">
     <div class="mainVisual">
       <Transition name="fade">
-        <img :src="currentImage" :key="currentImage" alt="画像" class="mainImg">
+        <img :src="currentImage" :key="currentImage" alt="画像" class="mainImg" loading="lazy">
       </Transition>
     </div>
     <div class="labels">
@@ -33,7 +33,7 @@
     timerId = setInterval(() => {
       currentIndex = (currentIndex + 1) % images.length
       currentImage.value = images[currentIndex]
-    }, 3000)
+    }, 4000)
   }
 
   const selectImage = (newImg) => {
