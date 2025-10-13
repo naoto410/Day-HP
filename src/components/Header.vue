@@ -30,7 +30,6 @@
   }
 
   .mainContents {
-    font-size: 0.8rem;
     line-height: 1.5rem;
     white-space: pre-line;
   }
@@ -39,12 +38,20 @@
     .header {
       gap: 3rem;
     }
+
+    .mainContents {
+      font-size: 0.6rem;
+    }
   }
 
   @media screen and (min-width: 965px) {
     .header {
       padding-right: 2rem;
       gap: 4.5rem;
+    }
+
+    .mainContents {
+      font-size: 0.8rem;
     }
   }
 </style>
