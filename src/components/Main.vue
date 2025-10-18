@@ -2,7 +2,7 @@
   <main class="main">
     <div class="mainVisual">
       <Transition name="fade">
-        <img :src="currentImage" :key="currentImage" alt="画像" class="mainImg" loading="lazy">
+        <img :src="currentImage" :key="currentImage" alt="画像" class="mainImg" @load="onImageLoad">
       </Transition>
     </div>
     <div class="labels">
@@ -24,31 +24,46 @@
   const modules = import.meta.glob('../assets/images/*.{jpg,jpeg,png}', { eager: true, query: '?url', import: 'default' })
   const images = Object.keys(modules).sort().map(k => modules[k])
   const currentImage = ref(images[0] ?? '')
+  const isLoaded = ref(false)
 
   let currentIndex = 0
   let timerId = null
 
-  const startTimer = () => {
-    if (timerId) clearInterval(timerId)
-    timerId = setInterval(() => {
-      currentIndex = (currentIndex + 1) % images.length
-      currentImage.value = images[currentIndex]
-    }, 4000)
+  const onImageLoad = () => {
+    isLoaded.value = true
   }
 
-  const selectImage = (newImg) => {
-    currentImage.value = newImg
-    currentIndex = images.indexOf(newImg)
-    startTimer()
-  }
+const preloadNextImage = (src) => {
+  const img = new Image()
+  img.src = src
+}
 
-  onMounted(() => {
-    startTimer()
-  })
+const startTimer = () => {
+  if (timerId) clearInterval(timerId)
+  timerId = setInterval(() => {
+    isLoaded.value = false // 次の画像に切り替える前に非表示に
+    currentIndex = (currentIndex + 1) % images.length
+    currentImage.value = images[currentIndex]
+    preloadNextImage(images[(currentIndex + 1) % images.length])
+  }, 4000)
+}
 
-  onUnmounted(() => {
-    if(timerId) clearInterval(timerId)
-  })
+const selectImage = (newImg) => {
+  isLoaded.value = false
+  currentImage.value = newImg
+  currentIndex = images.indexOf(newImg)
+  preloadNextImage(images[(currentIndex + 1) % images.length])
+  startTimer()
+}
+
+onMounted(() => {
+  preloadNextImage(images[1])
+  startTimer()
+})
+
+onUnmounted(() => {
+  if (timerId) clearInterval(timerId)
+})
 </script>
 
 <style scoped>
