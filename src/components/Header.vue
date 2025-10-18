@@ -19,6 +19,7 @@
   .header {
     display: flex;
     flex-direction: column;
+    gap: 3rem;
   }
 
   .logo {
@@ -33,12 +34,6 @@
     font-size: 0.8rem;
     line-height: 1.5rem;
     white-space: pre-line;
-  }
-
-  @media screen and (max-width: 964px) {
-    .header {
-      gap: 3rem;
-    }
   }
 
   @media screen and (min-width: 965px) {

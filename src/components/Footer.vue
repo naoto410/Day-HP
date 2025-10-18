@@ -38,7 +38,7 @@
   }
 
   .openingHours {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: flex-end;
     gap: 0.5rem;
@@ -63,10 +63,6 @@
   }
 
   @media screen and (max-width: 964px) {
-    .openingHours {
-      display: none;
-    }
-
     .navigation {
       position: fixed;
       left: 0;
@@ -79,6 +75,10 @@
   }
 
   @media screen and (min-width: 965px) {
+    .openingHours {
+      display: flex;
+    }
+
     .navigation {
       flex-direction: column;
     }

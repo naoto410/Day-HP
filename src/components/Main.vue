@@ -71,9 +71,13 @@ onUnmounted(() => {
     position: relative;
     display: flex;
     justify-content: center;
+    max-width: calc(100vh - 6rem);
+    width: 100%;
+    margin-bottom: 4rem;
   }
 
   .mainVisual {
+    width: 100%;
     aspect-ratio: 1 / 1.7;
     position: relative;
     border-radius: 50% 50% 0 0 / 30% 30% 0 0 ;
@@ -92,6 +96,7 @@ onUnmounted(() => {
 
   .labels {
     position: absolute;
+    bottom: -2rem;
     display: flex;
     gap: 1rem;
   }
@@ -128,24 +133,6 @@ onUnmounted(() => {
 
   .fade-leave-to {
     transform: translateX(-100%);
-  }
-
-  @media screen and (max-width: 964px) {
-    .main {
-      max-width: calc(100vh - 6rem);
-      width: 100%;
-      margin-bottom: 4rem;
-    }
-
-    .mainVisual {
-      width: 100%;
-    }
-
-    .labels {
-      bottom: -2rem;
-      left: 50%;
-      transform: translateX(-50%);
-    }
   }
 
   @media screen and (min-width: 965px) {
